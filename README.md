@@ -1,14 +1,24 @@
 # gift-cli
  
-A tiny cli that passes a tokenized command line to a command processor class
+A tiny cli that passes a tokenized command line to a command processor class.
 
 ## exported methods
 
-This module exports just two methods.
+This module exports four methods.
 
 ```
+// These are the main methoods that will be required
+// to run the cli application.
+
 module.exports.load_config_file
 module.exports.run_commands
+
+// These helper methods can be used
+// to make it easy to get parts of the command line
+
+module.exports.front_tokens = front_tokens;
+module.exports.rest_tokens = rest_tokens;
+
 ```
 
 `load_config_file` takes one parameter, a file name. The file should be a JSON formatted file. The resultant javascript object will be passed as config to the `run_commands` method.
@@ -110,3 +120,65 @@ async function run_tests()  {
 
 Notice that in the test, the input stream is a Readable derived from a string of commands. Two lines are provided. The last line commands `exit`, the only command processed by the run commands outside of the class.
 
+
+## helper methods
+
+* `front_tokens`
+* `rest_token`
+
+These two methods are basically extended slice methods.
+
+### `front_tokens`
+
+> given the result of a method `tokenize`, used internally to the library, this will return a slice of values as a space delimited string.
+> 
+> Parameters
+
+* tokens -- the syntactic token list returned by `tokenize`
+* start -- same as `start` in slice
+* count -- same as `count` in slice
+
+> 
+> **For example:**  *(This example is from [bash-xpos]() source code.)*
+
+```
+const {load_config_file,front_tokens,rest_tokens} = require('gift-cli')
+
+...
+
+case 'mkdir' : {
+    let remote_dir = front_tokens(tokens,1,1)
+    let known_host = front_tokens(tokens,2,1)
+    console.log(`mkdir will create a directory tree for ${remote_dir}`)
+    let b64pass = Buffer.from(conf.pass).toString('base64')
+    await xops.expect_ensure_dir(b64pass,conf.user,conf.IP,remote_dir,known_host)
+    break
+}
+```
+
+
+### `rest_token`
+> given the result of a method `tokenize`, used internally to the library, this will return a slice of values as a space delimited string starting at `start` and continuing to the end of the token list.
+> 
+> Parameters
+
+* tokens -- the syntactic token list returned by `tokenize`
+* start -- same as `start` in slice
+
+> **For example:**  *(This example is from [bash-xpos]() source code.)*
+
+```
+const {load_config_file,front_tokens,rest_tokens} = require('gift-cli')
+
+...
+
+
+case 'xbash' : {
+    let b64pass = Buffer.from(conf.pass).toString('base64')
+    let bash_op = front_tokens(tokens,1,1)
+    let params = rest_tokens(tokens,2)
+    await xops.perform_expect_op(b64pass,onf.user,conf.IP, bash_op, params)
+    break;
+}
+
+```

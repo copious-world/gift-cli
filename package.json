@@ -1,0 +1,30 @@
+{
+  "name": "gift-cli",
+  "version": "1.0.0",
+  "description": "A tiny cli that passes a tokenized command line to a command processor class",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/copious-world/gift-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "frame",
+    "command-line"
+  ],
+  "author": "R.Leddy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/copious-world/gift-cli/issues"
+  },
+  "homepage": "https://github.com/copious-world/gift-cli#readme",
+  "dependencies": {
+    "js-tokens": "^8.0.1"
+  }
+}

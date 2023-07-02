@@ -139,7 +139,7 @@ These two methods are basically extended slice methods.
 * count -- same as `count` in slice
 
 > 
-> **For example:**  *(This example is from [bash-xpos]() source code.)*
+> **For example:**  *(This example is from [bash-xpos](https://github.com/copious-world/bash-xops) source code.)*
 
 ```
 const {load_config_file,front_tokens,rest_tokens} = require('gift-cli')
@@ -165,7 +165,7 @@ case 'mkdir' : {
 * tokens -- the syntactic token list returned by `tokenize`
 * start -- same as `start` in slice
 
-> **For example:**  *(This example is from [bash-xpos]() source code.)*
+> **For example:**  *(This example is from [bash-xpos](https://github.com/copious-world/bash-xops) source code.)*
 
 ```
 const {load_config_file,front_tokens,rest_tokens} = require('gift-cli')

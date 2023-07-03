@@ -157,7 +157,7 @@ case 'mkdir' : {
 ```
 
 
-### `rest_token`
+### `rest_tokens`
 > given the result of a method `tokenize`, used internally to the library, this will return a slice of values as a space delimited string starting at `start` and continuing to the end of the token list.
 > 
 > Parameters
@@ -182,3 +182,31 @@ case 'xbash' : {
 }
 
 ```
+
+
+
+### `rest_tokens_array`
+> given the result of a method `tokenize`, used internally to the library, this will return a array that is a slice of values starting at `start` and continuing to the end of the token list.
+> 
+> Parameters
+
+* tokens -- the syntactic token list returned by `tokenize`
+* start -- same as `start` in slice
+
+> **For example:**  *(This example is from [bash-xpos](https://github.com/copious-world/bash-xops) source code.)*
+
+```
+const {load_config_file,front_tokens, rest_tokens_array} = require('gift-cli')
+
+...
+
+case "bash" : {
+    let bash_op = front_tokens(tokens,1,1)
+    let params = rest_tokens_array(tokens,2)
+    let out = await xops.run_local_bash_script(bash_op,params)
+    console.log(out)
+    break;
+}
+
+```
+

@@ -4,7 +4,7 @@ A tiny cli that passes a tokenized command line to a command processor class.
 
 ## exported methods
 
-This module exports four methods.
+This module exports five methods.
 
 ```
 // These are the main methoods that will be required
@@ -18,6 +18,7 @@ module.exports.run_commands
 
 module.exports.front_tokens = front_tokens;
 module.exports.rest_tokens = rest_tokens;
+module.exports.rest_tokens = rest_tokens_array;
 
 ```
 

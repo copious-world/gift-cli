@@ -126,6 +126,7 @@ Notice that in the test, the input stream is a Readable derived from a string of
 
 * `front_tokens`
 * `rest_token`
+* `rest_tokens_array `
 
 These two methods are basically extended slice methods.
 

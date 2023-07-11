@@ -1,6 +1,62 @@
 # gift-cli
  
-A tiny cli that passes a tokenized command line to a command processor class.
+A tiny cli class that passes a tokenized command line to a command processor class. This is a class for development. Make your own command processor class to do what you want.
+
+
+## typescript
+
+```
+cd ts
+tsc *.ts
+```
+
+ts config:
+```
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "target": "es2022"
+    }
+}
+```
+
+
+
+The module `cl_apps.ts` exports types and an *interface* **Commands**. The developer will want to implement a commnad processor of type **Commands**. 
+
+```
+
+/**
+ * @callback CommandProcessor
+ * @param {LToken[]} tokens -- The result of calling `tokenize`
+ * @param {object} conf -- the configuration file loaded by the application
+ */
+
+export type CommandProcessor = ( tokens : LToken[], conf : object ) => object;
+
+/**
+ * @callback ConfigLoader
+ * @param {LToken[]} tokens -- The result of calling `tokenize`
+ * @returns {object|boolean} -- If successful, returns the configuration file, otherwise returns false.
+ */
+
+export type ConfigLoader = ( tokens : LToken[], conf? : object ) => object|boolean;
+
+
+/**
+ * @typedef Commands
+ * @type {object}
+ * @property {CommandProcessor} process_command - type names returned by js-tokens.
+ * @property {ConfigLoader} try_getting_conf - an island of characters seen in an input string to the parser.
+ */
+
+interface Commands {
+    process_command : CommandProcessor,
+    try_getting_conf : ConfigLoader
+}
+
+```
+
 
 ## exported methods
 

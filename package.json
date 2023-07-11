@@ -1,7 +1,7 @@
 {
   "name": "gift-cli",
-  "version": "1.0.6",
-  "description": "A tiny cli that passes a tokenized command line to a command processor class",
+  "version": "1.0.7",
+  "description": "A tiny cli class that passes a tokenized command line to a command processor class",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/copious-world/gift-cli#readme",
   "dependencies": {
+    "@types/node": "^20.4.1",
     "js-tokens": "^8.0.1"
   }
 }

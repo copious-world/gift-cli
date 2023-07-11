@@ -28,7 +28,7 @@ export type ConfigLoader = ( tokens : LToken[], conf? : object ) => object|boole
  * @property {ConfigLoader} try_getting_conf - an island of characters seen in an input string to the parser.
  */
 
-interface Commands {
+export interface Commands {
     process_command : CommandProcessor,
     try_getting_conf : ConfigLoader
 }

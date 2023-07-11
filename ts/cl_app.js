@@ -1,8 +1,5 @@
-//import { tokenize } from './line_tokens';
-//import * as readline from 'node:readline';
-//
-const readline = require('node:readline')
-const {tokenize} = require('./line_tokens')
+import { tokenize } from './line_tokens';
+import * as readline from 'node:readline';
 /**
  * This is a command loop that reads in commands, line by line from an input stream.
  * Each command line is tokenized, and the tokens are passed to the `process_commands` method of the cmd object.
@@ -12,7 +9,7 @@ const {tokenize} = require('./line_tokens')
  * @param {stream} instream -- a node.js input stream
  * @param {stream} outstream -- a node.js output stream
  */
-async function run_commands(cmds, config, instream, outstream) {
+export async function run_commands(cmds, config, instream, outstream) {
     //
     const rl = readline.createInterface({
         input: instream,
@@ -48,4 +45,4 @@ async function run_commands(cmds, config, instream, outstream) {
     //
 }
 //
-module.exports.run_commands = run_commands
+// module.exports.run_commands = run_commands
